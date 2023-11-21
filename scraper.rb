@@ -26,5 +26,16 @@ pokemon_products = []
 # iterating over the list of HTML products
 html_products.each do |html_product|
   # extracting the data of interest from the current product HTML element 
+  url = html_product.css('a').first.attribute('href').value
+  image = html_product.css('img').first.attribute('src').value
+  name = html_product.css('h2').first.text
+  price = html_product.css('span').first.text
+
+  # storing the scraped data in a PokemonProduct object
+  pokemon_product = PokemonProduct.new(url, image, name, price)
+
+  # adding the PokemonProduct to the list of scraped objects
+  pokemon_products.push(pokemon_product)
+  puts(pokemon_product)
 end
 	
