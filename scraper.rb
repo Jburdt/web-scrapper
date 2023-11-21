@@ -1,10 +1,7 @@
 require "httparty"
 require "nokogiri"
 
-# puts "Hello, World!"
-
 # downloading the target webpage
-
 response = HTTParty.get("https://scrapeme.live/shop/", {
   headers: {
     "User-agent" => "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" 
@@ -36,6 +33,14 @@ html_products.each do |html_product|
 
   # adding the PokemonProduct to the list of scraped objects
   pokemon_products.push(pokemon_product)
-  puts(pokemon_product)
+
+  # definig the header row of the CSV file
+  csv_headers = ["url", "image", "name", "price"]
+  CSV.open('output.csv', "wb", write_headers: true, headers: csv_headers) do |csv| 
+    # adding each pokemon_product as a new row to the output CSV file
+    pokemon_products.each do |pokemon_product|
+      csv << pokemon_product
+    end
+  end
 end
 	
