@@ -1,5 +1,6 @@
 require "httparty"
 require "nokogiri"
+require "parallel"
 
 # downloading the target webpage
 response = HTTParty.get("https://scrapeme.live/shop/", {
@@ -96,10 +97,5 @@ html_products.each do |html_product|
   # incrementing the iteration counter
   i = i + 1
 end
-
-
-
-
-
 end
 	
