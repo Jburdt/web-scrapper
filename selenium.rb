@@ -41,7 +41,6 @@ end
 driver.quit 
  
 # exporting logic
-
 # selecting a pagination element 
 pagination_element = driver.find_element(:css, "a.page-numbers") 
  

@@ -34,7 +34,7 @@ html_products.each do |html_product|
 
   # adding the PokemonProduct to the list of scraped objects
   pokemon_products.push(pokemon_product)
-
+end
   # definig the header row of the CSV file
   csv_headers = ["url", "image", "name", "price"]
   CSV.open('output.csv', "wb", write_headers: true, headers: csv_headers) do |csv| 
@@ -43,3 +43,5 @@ html_products.each do |html_product|
       csv << pokemon_product
     end
   end
+puts 'done scraping'
+puts pokemon_products.length

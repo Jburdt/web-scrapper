@@ -2,6 +2,9 @@ require "httparty"
 require "nokogiri" 
 require "parallel" 
  
+puts "Started Crawling"
+
+
 # defining a data structure to store the scraped data 
 PokemonProduct = Struct.new(:url, :image, :name, :price) 
  
@@ -66,3 +69,5 @@ CSV.open("output.csv", "wb", write_headers: true, headers: csv_headers) do |csv|
 		csv << pokemon_product 
 	end 
 end
+
+puts "Finished Crawling"
